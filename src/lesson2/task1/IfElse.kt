@@ -66,7 +66,7 @@ fun minBiRoot(a: Double, b: Double, c: Double): Double {
 fun ageDescription(age: Int): String {
     return when {
         age <= 0 || age >= 200 -> return "неправильное значение"
-        age % 10 == 1 && age % 100 != 1 && age != 111 || age == 1 -> return "$age год"
+        age % 10 == 1 && age != 11 && age != 111 -> return "$age год"
         age % 10 in 2..4 && age % 100 !in 11..20 -> return "$age года"
         else -> "$age лет"
     }
@@ -79,11 +79,20 @@ fun ageDescription(age: Int): String {
  * и t3 часов — со скоростью v3 км/час.
  * Определить, за какое время он одолел первую половину пути?
  */
-fun timeForHalfWay(
-    t1: Double, v1: Double,
-    t2: Double, v2: Double,
-    t3: Double, v3: Double
-): Double = TODO()
+//fun timeForHalfWay(
+//    t1: Double, v1: Double,
+//    t2: Double, v2: Double,
+//    t3: Double, v3: Double
+//): Double {
+//    val s1: Double = t1 * v1
+//    val s2: Double = t2 * v2
+//    val s3: Double = t3 * v3
+//    val halfway = (s1 + s2 + s3) / 2
+//    return when {
+//        halfway < s1 ->
+//        else ->
+//    }
+//}
 
 /**
  * Простая
