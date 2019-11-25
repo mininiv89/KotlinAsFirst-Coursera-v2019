@@ -3,6 +3,8 @@
 package lesson2.task1
 
 import lesson1.task1.discriminant
+import kotlin.math.acos
+import kotlin.math.cos
 import kotlin.math.max
 import kotlin.math.sqrt
 
@@ -144,7 +146,18 @@ fun rookOrBishopThreatens(
  * прямоугольным (вернуть 1) или тупоугольным (вернуть 2).
  * Если такой треугольник не существует, вернуть -1.
  */
-fun triangleKind(a: Double, b: Double, c: Double): Int = TODO()
+fun triangleKind(a: Double, b: Double, c: Double): Int {
+    val angleA = acos(a / b)
+    val angleB = acos(b / c)
+    val angleC = acos(c / a)
+    return if (angleA + angleB + angleC != 180.0) {
+        if (angleA > 90.0 || angleB > 90.0 || angleC > 90.0) {
+            2
+        } else if (angleA == 90.0 || angleB == 90.0 || angleC == 90.0) {
+            1
+        } else 0
+    } else -1
+}
 
 /**
  * Средняя
