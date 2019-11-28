@@ -3,10 +3,8 @@
 package lesson2.task1
 
 import lesson1.task1.discriminant
-import kotlin.math.acos
-import kotlin.math.cos
-import kotlin.math.max
-import kotlin.math.sqrt
+import lesson1.task1.sqr
+import kotlin.math.*
 
 /**
  * Пример
@@ -146,17 +144,20 @@ fun rookOrBishopThreatens(
  * прямоугольным (вернуть 1) или тупоугольным (вернуть 2).
  * Если такой треугольник не существует, вернуть -1.
  */
+
+/**
+ * Создан вспомогательный класс radianForTriangle для вычесления угла треугольника
+ */
+fun angle(a: Double, b: Double, c: Double) = sqr(b) + sqr(c) - sqr(a)
+
 fun triangleKind(a: Double, b: Double, c: Double): Int {
-    val angleA = acos(a / b)
-    val angleB = acos(b / c)
-    val angleC = acos(c / a)
-    return if (angleA + angleB + angleC != 180.0) {
-        if (angleA > 90.0 || angleB > 90.0 || angleC > 90.0) {
-            2
-        } else if (angleA == 90.0 || angleB == 90.0 || angleC == 90.0) {
-            1
-        } else 0
-    } else -1
+    return if (a + b <= c || a + c <= b || b + c <= a) {
+        -1
+    } else if (angle(a, b, c) == 0.0 || angle(b, a, c) == 0.0 || angle(c, a, b) == 0.0) {
+        1
+    } else if (angle(a, b, c) < 0.0 || angle(b, a, c) < 0.0 || angle(c, a, b) < 0.0) {
+        2
+    } else 0
 }
 
 /**
