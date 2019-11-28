@@ -146,7 +146,7 @@ fun rookOrBishopThreatens(
  */
 
 /**
- * Создан вспомогательный класс radianForTriangle для вычесления угла треугольника
+ * Создан вспомогательный класс angle для вычесления угла треугольника
  */
 fun angle(a: Double, b: Double, c: Double) = sqr(b) + sqr(c) - sqr(a)
 
