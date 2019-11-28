@@ -2,6 +2,8 @@
 
 package lesson1.task1
 
+import lesson2.task1.rookOrBishopThreatens
+import lesson2.task1.segmentLength
 import kotlin.math.*
 
 /**
@@ -49,7 +51,8 @@ fun quadraticRootProduct(a: Double, b: Double, c: Double): Double {
  * Пример главной функции
  */
 fun main() {
-
+    val x = rookOrBishopThreatens(4, 5, 5, 7, 8, 8)
+    println(x)
 }
 
 /**

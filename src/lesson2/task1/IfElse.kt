@@ -134,7 +134,14 @@ fun rookOrBishopThreatens(
     kingX: Int, kingY: Int,
     rookX: Int, rookY: Int,
     bishopX: Int, bishopY: Int
-): Int = TODO()
+): Int {
+    return if (kingX == rookX || kingY == rookY || abs(kingX - bishopX) == abs(kingY - bishopY)) {
+        if (kingX == rookX || kingY == rookY) {
+            if ((kingX - bishopX) == (kingY - bishopY)) 3
+            else 1
+        } else 2
+    } else 0
+}
 
 /**
  * Простая
@@ -151,13 +158,10 @@ fun rookOrBishopThreatens(
 fun angle(a: Double, b: Double, c: Double) = sqr(b) + sqr(c) - sqr(a)
 
 fun triangleKind(a: Double, b: Double, c: Double): Int {
-    return if (a + b <= c || a + c <= b || b + c <= a) {
-        -1
-    } else if (angle(a, b, c) == 0.0 || angle(b, a, c) == 0.0 || angle(c, a, b) == 0.0) {
-        1
-    } else if (angle(a, b, c) < 0.0 || angle(b, a, c) < 0.0 || angle(c, a, b) < 0.0) {
-        2
-    } else 0
+    return if (a + b <= c || a + c <= b || b + c <= a) -1
+    else if (angle(a, b, c) == 0.0 || angle(b, a, c) == 0.0 || angle(c, a, b) == 0.0) 1
+    else if (angle(a, b, c) < 0.0 || angle(b, a, c) < 0.0 || angle(c, a, b) < 0.0) 2
+    else 0
 }
 
 /**
@@ -168,4 +172,13 @@ fun triangleKind(a: Double, b: Double, c: Double): Int {
  * Найти длину пересечения отрезков AB и CD.
  * Если пересечения нет, вернуть -1.
  */
-fun segmentLength(a: Int, b: Int, c: Int, d: Int): Int = TODO()
+fun segmentLength(a: Int, b: Int, c: Int, d: Int): Int {
+    return if (d < a || b < c) -1
+    else if (c >= a) {
+        if (b <= d) b - c
+        else d - c
+    } else {
+        if (b <= d) b - a
+        else d - a
+    }
+}
