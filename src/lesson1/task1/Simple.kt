@@ -51,8 +51,7 @@ fun quadraticRootProduct(a: Double, b: Double, c: Double): Double {
  * Пример главной функции
  */
 fun main() {
-    val x = rookOrBishopThreatens(4, 5, 5, 7, 8, 8)
-    println(x)
+
 }
 
 /**
