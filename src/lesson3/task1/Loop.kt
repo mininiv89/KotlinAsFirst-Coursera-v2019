@@ -235,7 +235,6 @@ fun squareSequenceDigit(n: Int): Int {
     result = sqr(number) / tens
     while (result > 10) result /= 10
     return result
-
 }
 
 /**
