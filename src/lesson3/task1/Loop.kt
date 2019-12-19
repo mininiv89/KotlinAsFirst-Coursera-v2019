@@ -2,7 +2,8 @@
 
 package lesson3.task1
 
-import kotlin.math.min
+import lesson1.task1.sqr
+import kotlin.math.max
 import kotlin.math.sqrt
 
 /**
@@ -100,9 +101,11 @@ fun fib(n: Int): Int {
  * минимальное число k, которое делится и на m и на n без остатка
  */
 fun lcm(m: Int, n: Int): Int {
-//    var min = min(m, n)
-//    for (k in min(m, n) step 2)
-TODO()
+    val max = max(m, n)
+    var count = 0
+    do count += max
+    while (count % m != 0 || count % n != 0)
+    return count
 }
 
 /**
@@ -110,14 +113,18 @@ TODO()
  *
  * Для заданного числа n > 1 найти минимальный делитель, превышающий 1
  */
-fun minDivisor(n: Int): Int = TODO()
+fun minDivisor(n: Int): Int {
+    var divider: Int = if (n % 2 == 0) 2 else 3
+    while (n % divider != 0) divider += 2
+    return divider
+}
 
 /**
  * Простая
  *
  * Для заданного числа n > 1 найти максимальный делитель, меньший n
  */
-fun maxDivisor(n: Int): Int = TODO()
+fun maxDivisor(n: Int): Int = n / minDivisor(n)
 
 /**
  * Простая
@@ -126,7 +133,9 @@ fun maxDivisor(n: Int): Int = TODO()
  * Взаимно простые числа не имеют общих делителей, кроме 1.
  * Например, 25 и 49 взаимно простые, а 6 и 8 -- нет.
  */
-fun isCoPrime(m: Int, n: Int): Boolean = TODO()
+fun isCoPrime(m: Int, n: Int): Boolean {
+    TODO()
+}
 
 /**
  * Простая
@@ -216,7 +225,18 @@ fun hasDifferentDigits(n: Int): Boolean = TODO()
  *
  * Использовать операции со строками в этой задаче запрещается.
  */
-fun squareSequenceDigit(n: Int): Int = TODO()
+fun squareSequenceDigit(n: Int): Int {
+    var tens = 10
+    var number = 1
+    var result: Int
+
+    for (i in 1..n) tens *= 10
+    while (sqr(number) <= tens) number += 1
+    result = sqr(number) / tens
+    while (result > 10) result /= 10
+    return result
+
+}
 
 /**
  * Сложная
@@ -227,4 +247,6 @@ fun squareSequenceDigit(n: Int): Int = TODO()
  *
  * Использовать операции со строками в этой задаче запрещается.
  */
-fun fibSequenceDigit(n: Int): Int = TODO()
+fun fibSequenceDigit(n: Int): Int {
+    TODO()
+}
