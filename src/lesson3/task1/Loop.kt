@@ -3,6 +3,7 @@
 package lesson3.task1
 
 import lesson1.task1.sqr
+import java.lang.Integer.min
 import kotlin.math.max
 import kotlin.math.sqrt
 
@@ -134,7 +135,9 @@ fun maxDivisor(n: Int): Int = n / minDivisor(n)
  * Например, 25 и 49 взаимно простые, а 6 и 8 -- нет.
  */
 fun isCoPrime(m: Int, n: Int): Boolean {
-    TODO()
+    var min = min(m, n)
+    for (i in 2..min) if (m % i == 0 && n % i == 0) return false
+    return true
 }
 
 /**
