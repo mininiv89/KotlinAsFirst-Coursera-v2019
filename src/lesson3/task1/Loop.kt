@@ -134,7 +134,7 @@ fun maxDivisor(n: Int): Int = n / minDivisor(n)
  * Например, 25 и 49 взаимно простые, а 6 и 8 -- нет.
  */
 fun isCoPrime(m: Int, n: Int): Boolean {
-    var min = min(m, n)
+    val min = min(m, n)
     for (i in 2..min) if (m % i == 0 && n % i == 0) return false
     return true
 }
@@ -252,7 +252,16 @@ fun cos(x: Double, eps: Double): Double {
  * Использовать операции со строками в этой задаче запрещается.
  */
 fun revert(n: Int): Int {
-    TODO()
+    var x = n
+    var y = 0
+    val ten = 10
+    var result = 0
+
+    while (x != 0) {
+        y = x % ten; x /= 10
+        result = result * ten + y
+    }
+    return result
 }
 
 /**
