@@ -4,7 +4,9 @@ package lesson3.task1
 
 import lesson1.task1.sqr
 import java.lang.Integer.min
+import kotlin.math.abs
 import kotlin.math.max
+import kotlin.math.pow
 import kotlin.math.sqrt
 
 /**
@@ -152,9 +154,9 @@ fun squareBetweenExists(m: Int, n: Int): Boolean {
     var sqrt: Double
     do {
         sqrt = sqrt(k.toDouble())
-        if (sqrt in m..n) return true
+        if (sqrt - sqrt.toInt() == 0.0) return true
         k--
-    } while (sqrt <= n)
+    } while (k in m..n)
     return false
 }
 
@@ -174,7 +176,16 @@ fun squareBetweenExists(m: Int, n: Int): Boolean {
  * Написать функцию, которая находит, сколько шагов требуется для
  * этого для какого-либо начального X > 0.
  */
-fun collatzSteps(x: Int): Int = TODO()
+fun collatzSteps(x: Int): Int {
+    var count = 0
+    var y = x
+    while (y != 1) {
+        if (y % 2 == 0) y /= 2
+        else y = 3 * y + 1
+        count++
+    }
+    return count
+}
 
 /**
  * Средняя
@@ -185,7 +196,21 @@ fun collatzSteps(x: Int): Int = TODO()
  * Подумайте, как добиться более быстрой сходимости ряда при больших значениях x.
  * Использовать kotlin.math.sin и другие стандартные реализации функции синуса в этой задаче запрещается.
  */
-fun sin(x: Double, eps: Double): Double = TODO()
+fun sin(x: Double, eps: Double): Double {
+    var switch = true
+    var i = 1
+    var result = x
+    while (result > abs(eps)) {
+        if (switch) result -= x.pow(i) / factorial(i)
+        else result += x.pow(i) / factorial(i)
+        switch = when (switch) {
+            true -> false
+            false -> true
+        }
+        i += 2
+    }
+    return result
+}
 
 /**
  * Средняя
