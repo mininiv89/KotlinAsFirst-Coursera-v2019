@@ -4,6 +4,7 @@ package lesson1.task1
 
 import lesson2.task1.rookOrBishopThreatens
 import lesson2.task1.segmentLength
+import lesson3.task1.factorial
 import kotlin.math.*
 
 /**
@@ -52,7 +53,8 @@ fun quadraticRootProduct(a: Double, b: Double, c: Double): Double {
  */
 fun main() {
     var k = 2
-    println(Int.MAX_VALUE - 2147395601)
+    var x = 2.0
+    println(100 * PI)
 }
 
 /**

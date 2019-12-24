@@ -4,10 +4,7 @@ package lesson3.task1
 
 import lesson1.task1.sqr
 import java.lang.Integer.min
-import kotlin.math.abs
-import kotlin.math.max
-import kotlin.math.pow
-import kotlin.math.sqrt
+import kotlin.math.*
 
 /**
  * Пример
@@ -197,18 +194,23 @@ fun collatzSteps(x: Int): Int {
  * Использовать kotlin.math.sin и другие стандартные реализации функции синуса в этой задаче запрещается.
  */
 fun sin(x: Double, eps: Double): Double {
+    var y = x
+    while (y >= 2 * PI) y -= 2 * PI
+
     var switch = true
-    var i = 1
-    var result = x
-    while (result > abs(eps)) {
-        if (switch) result -= x.pow(i) / factorial(i)
-        else result += x.pow(i) / factorial(i)
+    var i = 3
+    var result = y
+    var part: Double
+    do {
+        part = y.pow(i) / factorial(i)
+        if (switch) result -= part else result += part
         switch = when (switch) {
             true -> false
             false -> true
         }
         i += 2
-    }
+    } while (part >= abs(eps))
+
     return result
 }
 
@@ -221,7 +223,26 @@ fun sin(x: Double, eps: Double): Double {
  * Подумайте, как добиться более быстрой сходимости ряда при больших значениях x.
  * Использовать kotlin.math.cos и другие стандартные реализации функции косинуса в этой задаче запрещается.
  */
-fun cos(x: Double, eps: Double): Double = TODO()
+fun cos(x: Double, eps: Double): Double {
+    var y = x
+    while (y >= 2 * PI) y -= 2 * PI
+
+    var switch = true
+    var i = 2
+    var result = 1.0
+    var part: Double
+    do {
+        part = y.pow(i) / factorial(i)
+        if (switch) result -= part else result += part
+        switch = when (switch) {
+            true -> false
+            false -> true
+        }
+        i += 2
+    } while (part >= abs(eps))
+
+    return result
+}
 
 /**
  * Средняя
@@ -230,7 +251,9 @@ fun cos(x: Double, eps: Double): Double = TODO()
  *
  * Использовать операции со строками в этой задаче запрещается.
  */
-fun revert(n: Int): Int = TODO()
+fun revert(n: Int): Int {
+    TODO()
+}
 
 /**
  * Средняя
