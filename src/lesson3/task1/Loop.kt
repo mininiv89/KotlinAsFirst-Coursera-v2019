@@ -273,7 +273,12 @@ fun revert(n: Int): Int {
  *
  * Использовать операции со строками в этой задаче запрещается.
  */
-fun isPalindrome(n: Int): Boolean = TODO()
+fun isPalindrome(n: Int): Boolean {
+    var x = n
+    var y = revert(n)
+
+    TODO()
+}
 
 /**
  * Средняя
