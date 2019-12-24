@@ -51,9 +51,8 @@ fun quadraticRootProduct(a: Double, b: Double, c: Double): Double {
  * Пример главной функции
  */
 fun main() {
-    var n = 324323
-    var divider: Int = if (n % 2 == 0) 2 else 3
-    println(divider)
+    var k = 2
+    println(Int.MAX_VALUE - 2147395601)
 }
 
 /**
