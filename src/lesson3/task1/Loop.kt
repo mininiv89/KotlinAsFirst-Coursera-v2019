@@ -2,7 +2,7 @@
 
 package lesson3.task1
 
-import lesson1.task1.sqr
+import kotlinx.html.I
 import java.lang.Integer.min
 import kotlin.math.*
 
@@ -70,7 +70,13 @@ fun digitCountInNumber(n: Int, m: Int): Int =
  * Использовать операции со строками в этой задаче запрещается.
  */
 fun digitNumber(n: Int): Int {
-    TODO()
+    var count = 1
+    var numeral = n
+    while (numeral / 10 != 0) {
+        numeral /= 10
+        count++
+    }
+    return count
 }
 
 /**
@@ -219,7 +225,7 @@ fun sin(x: Double, eps: Double): Double {
  *
  * Для заданного x рассчитать с заданной точностью eps
  * cos(x) = 1 - x^2 / 2! + x^4 / 4! - x^6 / 6! + ...
- * Нужную точность считать достигнутой, если очередной член ряда меньше eps по модулю
+ * Нужную точность считать достигнутой, если очередной член ряда меньше  epsпо модулю
  * Подумайте, как добиться более быстрой сходимости ряда при больших значениях x.
  * Использовать kotlin.math.cos и другие стандартные реализации функции косинуса в этой задаче запрещается.
  */
@@ -254,12 +260,11 @@ fun cos(x: Double, eps: Double): Double {
 fun revert(n: Int): Int {
     var x = n
     var y = 0
-    val ten = 10
     var result = 0
 
     while (x != 0) {
-        y = x % ten; x /= 10
-        result = result * ten + y
+        y = x % 10; x /= 10
+        result = result * 10 + y
     }
     return result
 }
@@ -276,8 +281,11 @@ fun revert(n: Int): Int {
 fun isPalindrome(n: Int): Boolean {
     var x = n
     var y = revert(n)
-
-    TODO()
+    while (x != 0) {
+        if (x % 10 != y % 10) return false
+        x /= 10; y /= 10
+    }
+    return true
 }
 
 /**
@@ -288,7 +296,15 @@ fun isPalindrome(n: Int): Boolean {
  *
  * Использовать операции со строками в этой задаче запрещается.
  */
-fun hasDifferentDigits(n: Int): Boolean = TODO()
+fun hasDifferentDigits(n: Int): Boolean {
+    var numeral = n
+    var digit = numeral % 10
+    while (numeral != 0) {
+        if (digit != numeral % 10) return true
+        numeral /= 10
+    }
+    return false
+}
 
 /**
  * Сложная
@@ -300,15 +316,19 @@ fun hasDifferentDigits(n: Int): Boolean = TODO()
  * Использовать операции со строками в этой задаче запрещается.
  */
 fun squareSequenceDigit(n: Int): Int {
-    var tens = 10
-    var number = 1
-    var result: Int
+    var count = 0
+    var sqr: Int = 1
 
-    for (i in 1..n) tens *= 10
-    while (sqr(number) <= tens) number += 1
-    result = sqr(number) / tens
-    while (result > 10) result /= 10
-    return result
+    for (i in 1..Int.MAX_VALUE) {
+        sqr = i * i
+        count += digitNumber(sqr)
+        if (count >= n) break
+    }
+    for (i in 0..digitNumber(sqr)) {
+        if (count - i == n) return sqr % 10
+        else sqr /= 10
+    }
+    return 1
 }
 
 /**
@@ -321,5 +341,17 @@ fun squareSequenceDigit(n: Int): Int {
  * Использовать операции со строками в этой задаче запрещается.
  */
 fun fibSequenceDigit(n: Int): Int {
-    TODO()
+    var count = 0
+    var f: Int = 1
+
+    for (i in 1..Int.MAX_VALUE) {
+        f = fib(i)
+        count += digitNumber(f)
+        if (count >= n) break
+    }
+    for (i in 0..digitNumber(f)) {
+        if (count - i == n) return f % 10
+        else f /= 10
+    }
+    return 1
 }
