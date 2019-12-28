@@ -150,8 +150,9 @@ fun center(list: MutableList<Double>): MutableList<Double> {
 fun times(a: List<Int>, b: List<Int>): Int {
     val list = mutableListOf<Int>()
     list += if (a.size >= b.size) a else b
-    for (i in list)
-    TODO()
+    var result = 0
+    for (i in 0 until list.size) result += a[i] * b[i]
+    return result
 }
 
 /**
