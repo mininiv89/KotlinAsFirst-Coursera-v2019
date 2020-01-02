@@ -52,9 +52,9 @@ fun quadraticRootProduct(a: Double, b: Double, c: Double): Double {
  * Пример главной функции
  */
 fun main() {
-    var k = 2
-    var x = 2.0
-    println(100 * PI)
+    val str = '1'
+    val x = str.toInt()
+    println(x)
 }
 
 /**

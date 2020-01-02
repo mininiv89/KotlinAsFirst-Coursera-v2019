@@ -3,6 +3,7 @@
 package lesson4.task1
 
 import lesson1.task1.discriminant
+import java.lang.NumberFormatException
 import kotlin.math.pow
 import kotlin.math.sqrt
 
@@ -197,7 +198,7 @@ fun accumulate(list: MutableList<Int>): MutableList<Int> {
  */
 fun factorize(n: Int): List<Int> {
     var x = n
-    var list: MutableList<Int> = mutableListOf()
+    val list: MutableList<Int> = mutableListOf()
     var switch = true
     var i = 2
     while (switch) {
@@ -256,7 +257,7 @@ fun convert(n: Int, base: Int): List<Int> {
  * (например, n.toString(base) и подобные), запрещается.
  */
 fun convertToString(n: Int, base: Int): String {
-    var result: String = ""
+    var result = ""
     val alphabet = "abcdefghijklmnopqrstuvwxyz"
     convert(n, base).map {
         if (it > 9) {
@@ -273,7 +274,7 @@ fun convertToString(n: Int, base: Int): String {
  * из системы счисления с основанием base в десятичную.
  * Например: digits = (1, 3, 12), base = 14 -> 250
  */
-fun decimal(digits: List<Int>, base: Int): Int = TODO()
+fun decimal(digits: List<Int>, base: Int): Int = digits.reduce { acc, i -> base * acc + i }
 
 /**
  * Сложная
@@ -287,7 +288,20 @@ fun decimal(digits: List<Int>, base: Int): Int = TODO()
  * Использовать функции стандартной библиотеки, напрямую и полностью решающие данную задачу
  * (например, str.toInt(base)), запрещается.
  */
-fun decimalFromString(str: String, base: Int): Int = TODO()
+fun decimalFromString(str: String, base: Int): Int {
+    val list: MutableList<Int> = mutableListOf()
+    val alphabet = "abcdefghijklmnopqrstuvwxyz"
+
+    str.map {
+        try {
+            list.add(it.toString().toInt())
+        } catch (e: NumberFormatException) {
+            list.add(10 + alphabet.indexOf(it))
+        }
+    }
+
+    return decimal(list, base)
+}
 
 /**
  * Сложная
