@@ -222,6 +222,17 @@ class Tests {
     @Tag("Hard")
     fun roman() {
         assertEquals("I", roman(1))
+        assertEquals("II", roman(2))
+        assertEquals("III", roman(3))
+        assertEquals("IV", roman(4))
+        assertEquals("V", roman(5))
+        assertEquals("VI", roman(6))
+        assertEquals("VII", roman(7))
+        assertEquals("VIII", roman(8))
+        assertEquals("IX", roman(9))
+        assertEquals("X", roman(10))
+
+        assertEquals("I", roman(1))
         assertEquals("MMM", roman(3000))
         assertEquals("MCMLXXVIII", roman(1978))
         assertEquals("DCXCIV", roman(694))

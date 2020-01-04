@@ -3,6 +3,7 @@
 package lesson4.task1
 
 import lesson1.task1.discriminant
+import ru.spbstu.kotlin.generate.assume.retry
 import java.lang.NumberFormatException
 import kotlin.math.pow
 import kotlin.math.sqrt
@@ -311,7 +312,55 @@ fun decimalFromString(str: String, base: Int): Int {
  * 90 = XC, 100 = C, 400 = CD, 500 = D, 900 = CM, 1000 = M.
  * Например: 23 = XXIII, 44 = XLIV, 100 = C
  */
-fun roman(n: Int): String = TODO()
+fun roman(n: Int): String {
+    /** Функция для вычесления 1-9 в римской системе для каждой цифры в числе */
+    fun partOfRoman(n: Int, str1: String, str2: String, str3: String): String {
+        var result = ""
+        when (n) {
+            in 1..3 -> for (i in 1..n) result += str1
+            4 -> result = str1 + str2
+            5 -> result = str2
+            in 6..8 -> {
+                result = str2
+                for (i in 6..n) result += str1
+            }
+            9 -> {
+                result = str1 + str3
+            }
+            10 -> result += str3
+
+        }
+        return result
+    }
+
+    /** Основные переменные для вычелсения функции */
+    val elements = listOf("I", "V", "X", "L", "C", "D", "M", "", "") // Последние 2 элемента пусты. Идут как заглушки
+    var result = ""
+
+    /** Счетчик кол-ва цифр в числе */
+    var x = n
+    var count = 0
+    while (x > 0) {
+        x /= 10
+        count++
+    }
+
+    /** Цикл по каждой цифре из числа. Переменной х заново присвоено искомое значение
+     * для дальнейшего подсчета. Цикл работает максимум с 4-х значными числами не более 4000 */
+    var digit: Int
+    x = n
+    if (n < 4000) {
+        for (i in 1..count * 2 step 2) {
+            digit = x % 10
+            x /= 10
+            result = partOfRoman(digit, elements[i - 1], elements[i], elements[i + 1]) + result
+        }
+    }
+
+
+    return result
+}
+
 
 /**
  * Очень сложная
@@ -320,4 +369,27 @@ fun roman(n: Int): String = TODO()
  * Например, 375 = "триста семьдесят пять",
  * 23964 = "двадцать три тысячи девятьсот шестьдесят четыре"
  */
-fun russian(n: Int): String = TODO()
+fun russian(n: Int): String {
+    fun partOfRussian(n: Int): String {
+        var result = ""
+        when(n) {
+            1 -> result = "один"
+            2 -> result = "два"
+            3 -> result = "три"
+            4 -> result = "четыре"
+            5 -> result = "пять"
+            6 -> result = "шесть"
+            7 -> result = "семь"
+            8 -> result = "восемь"
+            9 -> result = "девять"
+            10 -> result = "десять"
+            11 -> result = "одиннадцать"
+            12 -> result = "двенадцать"
+            13 -> result = "тринадцать"
+            14 -> result = "четырнадцать"
+            15 -> result = "пятьнадцать"
+
+        }
+    }
+    TODO()
+}
