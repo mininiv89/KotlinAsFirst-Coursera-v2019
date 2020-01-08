@@ -370,26 +370,27 @@ fun roman(n: Int): String {
  * 23964 = "двадцать три тысячи девятьсот шестьдесят четыре"
  */
 fun russian(n: Int): String {
-    fun partOfRussian(n: Int): String {
-        var result = ""
-        when(n) {
-            1 -> result = "один"
-            2 -> result = "два"
-            3 -> result = "три"
-            4 -> result = "четыре"
-            5 -> result = "пять"
-            6 -> result = "шесть"
-            7 -> result = "семь"
-            8 -> result = "восемь"
-            9 -> result = "девять"
-            10 -> result = "десять"
-            11 -> result = "одиннадцать"
-            12 -> result = "двенадцать"
-            13 -> result = "тринадцать"
-            14 -> result = "четырнадцать"
-            15 -> result = "пятьнадцать"
-
-        }
-    }
+//    fun partOfRussian(n: Int): String {
+//        var result = ""
+//        when(n) {
+//            1 -> result = "один"
+//            2 -> result = "два"
+//            3 -> result = "три"
+//            4 -> result = "четыре"
+//            5 -> result = "пять"
+//            6 -> result = "шесть"
+//            7 -> result = "семь"
+//            8 -> result = "восемь"
+//            9 -> result = "девять"
+//            10 -> result = "десять"
+//            11 -> result = "одиннадцать"
+//            12 -> result = "двенадцать"
+//            13 -> result = "тринадцать"
+//            14 -> result = "четырнадцать"
+//            15 -> result = "пятьнадцать"
+//
+//        }
+//        TODO()
+//    }
     TODO()
 }

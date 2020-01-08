@@ -52,9 +52,15 @@ fun quadraticRootProduct(a: Double, b: Double, c: Double): Double {
  * Пример главной функции
  */
 fun main() {
-    val str = '1'
-    val x = str.toInt()
-    println(x)
+    val map = mutableMapOf<Int, List<String>>()
+    var list = mutableListOf<String>("1", "2", "3")
+    println(list)
+    map[1] = list
+    println(map[1])
+    list[0] = "212122323nb"
+    println(map[1])
+
+
 }
 
 /**
