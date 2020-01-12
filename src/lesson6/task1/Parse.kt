@@ -69,7 +69,40 @@ fun main() {
  * Обратите внимание: некорректная с точки зрения календаря дата (например, 30.02.2009) считается неверными
  * входными данными.
  */
-fun dateStrToDigit(str: String): String = TODO()
+fun dateStrToDigit(str: String): String {
+    val months = listOf<String>(
+        "января",
+        "февраля",
+        "марта",
+        "апреля",
+        "мая",
+        "июня",
+        "июля",
+        "августа",
+        "сентября",
+        "октября",
+        "ноября",
+        "декабря"
+    )
+    try {
+        val days = listOf<Int>(31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31)
+        val date = str.split("\u0020")
+
+        if (date.size != 3) throw Exception("Неправильный формат строки")
+
+        val month = months.indexOf(date[1].toLowerCase()) + 1
+        val day = date[0].toInt()
+        val year = date[2].toInt()
+
+        if (day > days[month - 1] || day < 1) throw Exception("Неправильный формат дня")
+        if (month == 2 && day == 29 && year % 4 != 0) throw Exception("Не высокостный год")
+
+        return String.format("%02d.%02d.%04d", day, month, year)
+
+    } catch (e: Exception) {
+        return ""
+    }
+}
 
 /**
  * Средняя
@@ -81,7 +114,39 @@ fun dateStrToDigit(str: String): String = TODO()
  * Обратите внимание: некорректная с точки зрения календаря дата (например, 30 февраля 2009) считается неверными
  * входными данными.
  */
-fun dateDigitToStr(digital: String): String = TODO()
+fun dateDigitToStr(digital: String): String {
+    val str = digital.split(".")
+    val months = listOf<String>(
+        "января",
+        "февраля",
+        "марта",
+        "апреля",
+        "мая",
+        "июня",
+        "июля",
+        "августа",
+        "сентября",
+        "октября",
+        "ноября",
+        "декабря"
+    )
+    val days = listOf<Int>(31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31)
+
+    return try {
+        if (str.size != 3) throw Exception("Строка не корректна")
+        val day = str[0].toInt()
+        val month = months[str[1].toInt() - 1]
+        val year = str[2].toInt()
+
+        if (days[str[1].toInt() - 1] < day) throw Exception("Не корректен день")
+        if (month.contains("февраля") && day == 29 && year % 4 != 0) throw Exception("Не высокостный год")
+
+        "$day $month $year"
+    } catch (e: Exception) {
+        ""
+    }
+
+}
 
 /**
  * Средняя
