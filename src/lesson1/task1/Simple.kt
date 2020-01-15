@@ -5,6 +5,7 @@ package lesson1.task1
 import lesson2.task1.rookOrBishopThreatens
 import lesson2.task1.segmentLength
 import lesson3.task1.factorial
+import java.util.regex.Pattern
 import kotlin.math.*
 
 /**
@@ -52,15 +53,7 @@ fun quadraticRootProduct(a: Double, b: Double, c: Double): Double {
  * Пример главной функции
  */
 fun main() {
-    val map = mutableMapOf<Int, List<String>>()
-    var list = mutableListOf<String>("1", "2", "3")
-    println(list)
-    map[1] = list
-    println(map[1])
-    list[0] = "212122323nb"
-    println(map[1])
-
-
+    val str = "+7 (921) 577-88-50"
 }
 
 /**
