@@ -53,7 +53,8 @@ fun quadraticRootProduct(a: Double, b: Double, c: Double): Double {
  * Пример главной функции
  */
 fun main() {
-    val str = "+7 (921) 577-88-50"
+    val str = "Мы пошли прямо Прямо располагался магазин"
+    println(str.indexOf("прямо"))
 }
 
 /**
